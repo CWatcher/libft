@@ -1,19 +1,19 @@
 SRC		= ft_strlen.c
 OBJ		= ${SRC:.c=.o}
-NAM	= libft.a
+NAME	= libft.a
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -f
 
-$(NAM):	$(OBJ)
-	ar r $@ $?
+$(NAME):	$(OBJ)
+	ar rs $@ $?
 
-all:	$(NAM)
+all:		$(NAME)
 
 clean:
 	$(RM) $(OBJ)
 
-fclean:	clean
-	$(RM) $(NAM)
+fclean:		clean
+	$(RM) $(NAME)
 
-re:		fclean all
+re:			fclean all
