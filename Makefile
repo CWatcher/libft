@@ -1,4 +1,4 @@
-SRC		= ft_strlen.c
+SRC		= ft_strlen.c ft_strlcpy.c
 OBJ		= ${SRC:.c=.o}
 NAME	= libft.a
 CC		= gcc
