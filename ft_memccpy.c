@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/04 12:32:57 by CWatcher          #+#    #+#             */
-/*   Updated: 2020/11/05 17:54:35 by CWatcher         ###   ########.fr       */
+/*   Created: 2020/11/05 15:40:17 by CWatcher          #+#    #+#             */
+/*   Updated: 2020/11/05 17:52:07 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include <stddef.h>
 
-# include <stddef.h>
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+{
+	unsigned char		*d;
+	const unsigned char	*s;
+	size_t				i;
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
-size_t	ft_strlen(const char *s);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-
-#endif
+	d = dst;
+	s = src;
+	i = 0;
+	while (i < n)
+	{
+		if ((d[i] = s[i]) == (unsigned char)c)
+			return (d + i + 1);
+		i++;
+	}
+	return (NULL);
+}

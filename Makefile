@@ -1,7 +1,7 @@
-SRC		= ft_strlen.c ft_strlcpy.c
+SRC		= ft_memccpy.c ft_strlen.c ft_strlcpy.c
 OBJ		= ${SRC:.c=.o}
 NAME	= libft.a
-CC		= gcc
+CC		= clang
 CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -f
 
