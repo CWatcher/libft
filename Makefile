@@ -21,4 +21,3 @@ re:			fclean all
 so:
 	$(CC) $(CFLAGS) -fpic -c $(SRC)
 	$(CC) -shared -o libft.so $(OBJ)
-
