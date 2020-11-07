@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/04 12:32:57 by CWatcher          #+#    #+#             */
-/*   Updated: 2020/11/05 17:54:35 by CWatcher         ###   ########.fr       */
+/*   Created: 2020/09/14 20:07:37 by cwatcher          #+#    #+#             */
+/*   Updated: 2020/11/07 14:04:00 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+int	ft_atoi(char *nptr)
+{
+	int	i;
+	int	sn;
 
-# include <stddef.h>
-
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
-size_t	ft_strlen(const char *s);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-char	*ft_strdup(const char *s);
-int		ft_atoi(char *str);
-char	**ft_split(char const *s, char c);
-
-#endif
+	i = 0;
+	sn = 1;
+	while (*nptr == ' ' || *nptr == '\t' || *nptr == '\n' || *nptr == '\r' ||
+			*nptr == '\f' || *nptr == '\v')
+		++nptr;
+	if (*nptr == '+' || *nptr == '-')
+	{
+		if (*nptr == '-')
+			sn *= -1;
+		++nptr;
+	}
+	while (*nptr >= '0' && *nptr <= '9')
+	{
+		i = i * 10 + *nptr - '0';
+		++nptr;
+	}
+	return (sn * i);
+}
