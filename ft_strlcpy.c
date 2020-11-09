@@ -6,11 +6,11 @@
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 17:42:36 by CWatcher          #+#    #+#             */
-/*   Updated: 2020/11/05 13:30:24 by CWatcher         ###   ########.fr       */
+/*   Updated: 2020/11/08 13:57:40 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stddef.h>
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
@@ -20,7 +20,9 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 
 	if (!src)
 		return (0);
-	n = ft_strlen(src);
+	n = 0;
+	while (src[n])
+		n++;
 	if (dst && dstsize)
 	{
 		i = 0;
