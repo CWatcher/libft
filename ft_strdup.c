@@ -6,7 +6,7 @@
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 21:03:38 by cwatcher          #+#    #+#             */
-/*   Updated: 2020/11/08 13:55:13 by CWatcher         ###   ########.fr       */
+/*   Updated: 2020/11/10 15:45:12 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,29 @@ char	*ft_strdup(const char *s)
 	d = malloc((n + 1) * sizeof(char));
 	while (d && ++i <= n)
 		d[i] = s[i];
+	return (d);
+}
+
+char	*ft_strndup(const char *s, size_t n)
+{
+	size_t	i;
+	size_t	l;
+	char	*d;
+
+	if (!s)
+		return (NULL);
+	l = 0;
+	while (s[l])
+		l++;
+	n = n < l ? n : l;
+	if (!(d = malloc((n + 1) * sizeof(char))))
+		return (NULL);
+	i = 0;
+	while (i < n)
+	{
+		d[i] = s[i];
+		++i;
+	}
+	d[n] = '\0';
 	return (d);
 }
