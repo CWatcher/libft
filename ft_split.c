@@ -38,12 +38,11 @@ char	*findwd(const char *s)
 size_t	wdcount(const char *s)
 {
 	size_t c = 0;
-	s = findwd(s);
-	while (!ft_isspace(*s))
+
+	while (*(s = findwd(s)))
 	{
 		c++;
 		s += wdlen(s);
-		s = findwd(s);
 	}
 	return (c);
 }
