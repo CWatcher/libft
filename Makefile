@@ -6,9 +6,10 @@ SRC		= ft_memset.c ft_bzero.c ft_calloc.c \
 		  ft_atoi.c \
 		  ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 		  ft_toupper.c ft_tolower.c\
-		  ft_split.c
+		  ft_strtrim.c ft_substr.c ft_strjoin.c ft_split.c
 OBJ		= $(SRC:.c=.o)
 NAME	= libft.a
+SO		= libft.so
 CC		= clang
 CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -f
@@ -22,10 +23,10 @@ clean:
 	$(RM) $(OBJ)
 
 fclean:		clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(SO)
 
 re:			fclean all
 
 so:
 	$(CC) $(CFLAGS) -fpic -c $(SRC)
-	$(CC) -shared -o libft.so $(OBJ)
+	$(CC) -shared -o $(SO) $(OBJ)
