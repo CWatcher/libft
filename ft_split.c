@@ -6,68 +6,72 @@
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 19:25:15 by CWatcher          #+#    #+#             */
-/*   Updated: 2020/11/11 10:43:08 by CWatcher         ###   ########.fr       */
+/*   Updated: 2020/11/13 12:41:13 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "libft.h"
 
-int		ft_isspace(char c)
+size_t	ft_wdlen(const char *s, char delim)
 {
-	if (c == ' ' || c == '\t' || c == '\n' || c == '\0')
-		return (1);
-	else
-		return (0);
+	size_t n;
+
+	n = 0;
+	while (s && s[n] && s[n] != delim)
+		n++;
+	return (n);
 }
 
-size_t	wdlen(const char *s)
+char	*ft_skipchr(const char *s, char delim)
 {
-	size_t i = 0;
-	while (!ft_isspace(s[i]))
-		i++;
-	return (i);
-}
-
-char	*findwd(const char *s)
-{
-	while (*s && ft_isspace(*s))
+	while (s && *s && *s == delim)
 		s++;
 	return (char *)s;
 }
 
-size_t	wdcount(const char *s)
+size_t	ft_wdcount(const char *s, char delim)
 {
-	size_t c = 0;
-
-	while (*(s = findwd(s)))
-	{
-		c++;
-		s += wdlen(s);
-	}
-	return (c);
-}
-
-char	*wddup(const char *s) {
-	size_t n = wdlen(s);
-	char *d = malloc((n + 1) * sizeof(*s));
-	for (size_t i = 0; i < n; i++)
-		d[i] = s[i];
-	d[n] = '\0';
-	return (d);
-}
-
-char **ft_split(char const *s, char c)
-{
-	c = 0;
 	size_t n;
 
-	n = wdcount(s);
-	char **ps = malloc((n + 1) * sizeof(*ps));
-	for (size_t i = 0; i < n; i++)
+	n = 0;
+	while (s && *(s = ft_skipchr(s, delim)))
 	{
-		s = findwd(s);
-		ps[i] = wddup(s);
-		s += wdlen(s);
+		n++;
+		s += ft_wdlen(s, delim);
+	}
+	return (n);
+}
+
+char	**ft_freestrs(char **ps)
+{
+	while (*ps)
+		free(*ps++);
+	free(ps);
+	return (NULL);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**ps;
+	size_t	n;
+	size_t	l;
+	size_t	i;
+
+	if (!s)
+		return (NULL);
+	n = ft_wdcount(s, c);
+	if (!(ps = malloc((n + 1) * sizeof(*ps))))
+		return (NULL);
+	i = 0;
+	while (i < n)
+	{
+		s = ft_skipchr(s, c);
+		l = ft_wdlen(s, c);
+		if (!(ps[i] = ft_strndup(s, l)))
+			ps = ft_freestrs(ps);
+		s += l;
+		i++;
 	}
 	ps[n] = NULL;
 	return (ps);
