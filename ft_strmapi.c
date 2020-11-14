@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/14 11:42:49 by CWatcher          #+#    #+#             */
+/*   Updated: 2020/11/14 11:43:06 by CWatcher         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <limits.h>
 #include <stdlib.h>
 #include "libft.h"
 
-char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	size_t	i;
 	size_t	n;
-	char 	*d;
+	char	*d;
 
 	if (!s)
 		return (NULL);
