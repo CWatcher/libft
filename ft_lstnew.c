@@ -6,7 +6,7 @@
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 12:50:55 by CWatcher          #+#    #+#             */
-/*   Updated: 2020/11/15 17:32:50 by CWatcher         ###   ########.fr       */
+/*   Updated: 2020/11/15 19:36:18 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*pl;
+	t_list	*p;
 
-	if (!(pl = malloc(sizeof(*pl))))
+	if (!(p = malloc(sizeof(*p))))
 		return (NULL);
-	pl->content = content;
-	return (pl);
+	p->content = content;
+	p->next = NULL;
+	return (p);
 }
