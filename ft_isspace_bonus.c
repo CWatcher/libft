@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_isspace_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/18 21:03:38 by cwatcher          #+#    #+#             */
-/*   Updated: 2020/11/16 13:01:25 by CWatcher         ###   ########.fr       */
+/*   Created: 2020/11/16 13:09:06 by CWatcher          #+#    #+#             */
+/*   Updated: 2020/11/16 13:09:10 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-char	*ft_strdup(const char *s)
+int	ft_isspace(char c)
 {
-	size_t	n;
-	size_t	i;
-	char	*d;
+	const char *ws = " \t\n\v\f\r";
 
-	n = 0;
-	while (s[n])
-		n++;
-	i = -1;
-	d = malloc((n + 1) * sizeof(char));
-	while (d && ++i <= n)
-		d[i] = s[i];
-	return (d);
+	while (*ws && c != *ws)
+		ws++;
+	if (*ws)
+		return (1);
+	return (0);
 }

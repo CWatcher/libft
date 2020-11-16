@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strstr_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/18 21:03:38 by cwatcher          #+#    #+#             */
-/*   Updated: 2020/11/16 13:01:25 by CWatcher         ###   ########.fr       */
+/*   Created: 2020/11/16 13:07:03 by CWatcher          #+#    #+#             */
+/*   Updated: 2020/11/16 13:08:01 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <stddef.h>
 
-char	*ft_strdup(const char *s)
+char	*ft_strstr(const char *s, const char *s2)
 {
-	size_t	n;
-	size_t	i;
-	char	*d;
+	const char	*p;
+	size_t		i;
+	size_t		j;
 
-	n = 0;
-	while (s[n])
-		n++;
-	i = -1;
-	d = malloc((n + 1) * sizeof(char));
-	while (d && ++i <= n)
-		d[i] = s[i];
-	return (d);
+	if (!*s2)
+		return ((char *)s);
+	i = 0;
+	p = s;
+	while (s[i])
+	{
+		j = 0;
+		while (p[j] && p[j] == s2[j])
+			if (!s2[++j])
+				return ((char *)p);
+		i++;
+		p++;
+	}
+	return (NULL);
 }
