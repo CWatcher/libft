@@ -45,9 +45,14 @@ size_t	ft_wdcount(const char *s, char delim)
 
 char	**ft_freestrs(char **ps)
 {
+    char **pp;
+
+    if (!ps)
+        return NULL;
+    pp = ps;
 	while (*ps)
 		free(*ps++);
-	free(ps);
+	free(pp);
 	return (NULL);
 }
 
