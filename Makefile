@@ -32,7 +32,7 @@ NAME	= libft.a
 SO		= libft.so
 CC		= clang
 CFLAGS	= -Wall -Wextra -Werror
-AR		= ar rs
+AR		= ar rcs
 
 $(NAME):	$(OBJ)
 	$(AR) $@ $?
