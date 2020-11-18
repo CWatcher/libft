@@ -6,7 +6,7 @@
 #    By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/15 16:37:00 by CWatcher          #+#    #+#              #
-#    Updated: 2020/11/16 15:21:53 by CWatcher         ###   ########.fr        #
+#    Updated: 2020/11/18 13:50:35 by CWatcher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,3 +55,5 @@ bonus:	$(OBJ_B) all
 so:
 	$(CC) $(CFLAGS) -fpic -c $(SRC)
 	$(CC) -shared -o $(SO) $(OBJ)
+
+.PHONY:		all clean fclean re bonus so
