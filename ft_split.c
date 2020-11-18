@@ -6,14 +6,14 @@
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 19:25:15 by CWatcher          #+#    #+#             */
-/*   Updated: 2020/11/13 12:41:13 by CWatcher         ###   ########.fr       */
+/*   Updated: 2020/11/18 13:06:02 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-size_t	ft_wdlen(const char *s, char delim)
+static size_t	ft_wdlen(const char *s, char delim)
 {
 	size_t n;
 
@@ -23,14 +23,14 @@ size_t	ft_wdlen(const char *s, char delim)
 	return (n);
 }
 
-char	*ft_skipchr(const char *s, char delim)
+static char		*ft_skipchr(const char *s, char delim)
 {
 	while (s && *s && *s == delim)
 		s++;
 	return (char *)s;
 }
 
-size_t	ft_wdcount(const char *s, char delim)
+static size_t	ft_wdcount(const char *s, char delim)
 {
 	size_t n;
 
@@ -43,20 +43,20 @@ size_t	ft_wdcount(const char *s, char delim)
 	return (n);
 }
 
-char	**ft_freestrs(char **ps)
+static char		**ft_freestrs(char **ps)
 {
-    char **pp;
+	char **pp;
 
-    if (!ps)
-        return NULL;
-    pp = ps;
+	if (!ps)
+		return (NULL);
+	pp = ps;
 	while (*ps)
 		free(*ps++);
 	free(pp);
 	return (NULL);
 }
 
-char	**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
 	char	**ps;
 	size_t	n;

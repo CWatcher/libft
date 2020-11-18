@@ -6,7 +6,7 @@
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 18:56:47 by CWatcher          #+#    #+#             */
-/*   Updated: 2020/11/08 11:27:40 by CWatcher         ###   ########.fr       */
+/*   Updated: 2020/11/18 13:00:33 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		if (p[i] == (char) c)
+		if (p[i] == (char)c)
 			return (char *)(p + i);
 		i++;
 	}
