@@ -6,7 +6,7 @@
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 19:25:15 by CWatcher          #+#    #+#             */
-/*   Updated: 2020/11/18 13:06:02 by CWatcher         ###   ########.fr       */
+/*   Updated: 2020/11/19 16:34:06 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char			**ft_split(char const *s, char c)
 		s = ft_skipchr(s, c);
 		l = ft_wdlen(s, c);
 		if (!(ps[i] = ft_strndup(s, l)))
-			ps = ft_freestrs(ps);
+			return (ps = ft_freestrs(ps));
 		s += l;
 		i++;
 	}
