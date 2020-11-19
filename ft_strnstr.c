@@ -6,7 +6,7 @@
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 19:30:33 by CWatcher          #+#    #+#             */
-/*   Updated: 2020/11/16 13:08:32 by CWatcher         ###   ########.fr       */
+/*   Updated: 2020/11/19 17:38:46 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,20 @@
 
 char	*ft_strnstr(const char *s, const char *s2, size_t n)
 {
-	const char	*p;
-	size_t		i;
-	size_t		j;
+	size_t	j;
 
+	if (!s || !s2)
+		return (NULL);
 	if (!*s2)
 		return ((char *)s);
-	i = 0;
-	p = s;
-	while (i < n && s[i])
+	while (n > 0 && *s)
 	{
 		j = 0;
-		while (p[j] && i + j < n && p[j] == s2[j])
+		while (s[j] && j < n && s[j] == s2[j])
 			if (!s2[++j])
-				return ((char *)p);
-		i++;
-		p++;
+				return ((char *)s);
+		n--;
+		s++;
 	}
 	return (NULL);
 }

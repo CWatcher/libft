@@ -14,22 +14,20 @@
 
 char	*ft_strstr(const char *s, const char *s2)
 {
-	const char	*p;
-	size_t		i;
-	size_t		j;
+	size_t	j;
 
+
+	if (!s || !s2)
+		return (NULL);
 	if (!*s2)
 		return ((char *)s);
-	i = 0;
-	p = s;
-	while (s[i])
+	while (*s)
 	{
 		j = 0;
-		while (p[j] && p[j] == s2[j])
+		while (s[j] && s[j] == s2[j])
 			if (!s2[++j])
-				return ((char *)p);
-		i++;
-		p++;
+				return ((char *)s);
+		s++;
 	}
 	return (NULL);
 }
