@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "libft.h"
 
 char	*ft_strdup(const char *s)
 {
@@ -18,9 +19,9 @@ char	*ft_strdup(const char *s)
 	size_t	i;
 	char	*d;
 
-	n = 0;
-	while (s[n])
-		n++;
+	if (!s)
+		return (NULL);
+	n = ft_strlen(s);
 	i = -1;
 	d = malloc((n + 1) * sizeof(char));
 	while (d && ++i <= n)
