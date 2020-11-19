@@ -6,7 +6,7 @@
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/14 11:42:49 by CWatcher          #+#    #+#             */
-/*   Updated: 2020/11/14 11:43:06 by CWatcher         ###   ########.fr       */
+/*   Updated: 2020/11/19 17:04:57 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!(d = malloc((n + 1) * sizeof(char))))
 		return (NULL);
 	d[n] = '\0';
-	i = 0;
-	while (i < n)
-	{
+	i = -1;
+	while (++i < n)
 		d[i] = f(i, s[i]);
-		i++;
-	}
 	return (d);
 }
