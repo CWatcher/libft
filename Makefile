@@ -31,7 +31,7 @@ OBJ_B	= $(SRC_B:.c=.o)
 NAME	= libft.a
 SO		= libft.so
 CC		= clang
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -O0
 AR		= ar rcs
 
 $(NAME):	$(OBJ)
