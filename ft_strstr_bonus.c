@@ -16,7 +16,6 @@ char	*ft_strstr(const char *s, const char *s2)
 {
 	size_t	j;
 
-
 	if (!s || !s2)
 		return (NULL);
 	if (!*s2)
