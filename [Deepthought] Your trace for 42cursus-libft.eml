@@ -1,0 +1,844 @@
+Delivered-To: aekulygin@gmail.com
+Received: by 2002:a05:6000:11cb:0:0:0:0 with SMTP id i11csp545950wrx;
+        Wed, 18 Nov 2020 09:43:10 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJziy0N11HiBiEHHjRJnaJANpinwA39g7MqWTqr6sDvAwzR5M0FYErJu4oZEWxMXWu3V+vsj
+X-Received: by 2002:ac2:4831:: with SMTP id 17mr4299328lft.487.1605721389988;
+        Wed, 18 Nov 2020 09:43:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605721389; cv=none;
+        d=google.com; s=arc-20160816;
+        b=dfZWjmspSEnkgok4xXq1oze8tfRaY7wkUO/cYqN87fdH/3kzmwKPCVuaPjsWU2rS4p
+         qRt4BY132O3Qz+z56o+Tbu0cnIlEG/RefqKI3BxXlz1HkRR1uSml0YMt+6v1EvS7Fi94
+         1QOboMsSwoLqSxOv0lSwR/BPyWuPZPP/+0+NjU5g0erGPCJEenildjsHOPCk1X+8b6y8
+         CBS98EAU5Je+I44dnXsYFez6Hp9s1fE2cnnYD3vKxIpZBrDiNaahf9NXElLvhC5PGEP6
+         TVVJ/uoejEP9cgUl4d7vrfxLcQHRpBQQ4DrCFZCryQC/0tHKAaQW/qzSL+pNWnH2OxBr
+         XYnw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=to:from_alias:from:subject:mime-version:dkim-signature:delivered-to
+         :message-id:date;
+        bh=TrJSKt3rjPHJzc2wpd2ccSs5iMih3FhO6B+pyAxKt0Q=;
+        b=pqCgmYI9VcVaDZQqbDM9Kn8VW569SL+lVpAcBDyWrt6Amou7EpE38/VUW5rAmqZy5x
+         21fzr1JRkggV2bYBOJHdJEJNd+dnvs3ddJe4dSJDFLV1K0OeBTAiyXnfGmRZPk4LfV5e
+         fMkvVsNN46hLYa56BPuMmUsuZXnZDYlWNB0OZDQFK0DOHu0qL0nA1GZVjR+goI5PEJTb
+         NHren4MsgISGdtMH8oabPz8fo4Ix5uSM/ZtZexSjvrQJlr/nvxhBbD4b1qF4xDlXZcXM
+         3fsODvxF8DUgGpyvIx1epHrX+uwWdSXpvkxb7doFoNh2ub4n3MHnH6hN2wQn+x0N0IDa
+         +zuA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@21-school.ru header.s=student header.b=Yh2Hp3Ey;
+       spf=pass (google.com: domain of noreply@21-school.ru designates 83.69.219.254 as permitted sender) smtp.mailfrom=noreply@21-school.ru;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=21-school.ru
+Return-Path: <noreply@21-school.ru>
+Received: from student.21-school.ru (mail-student.21-school.ru. [83.69.219.254])
+        by mx.google.com with ESMTPS id j124si7844709lfj.54.2020.11.18.09.43.09
+        for <aekulygin@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 18 Nov 2020 09:43:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of noreply@21-school.ru designates 83.69.219.254 as permitted sender) client-ip=83.69.219.254;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@21-school.ru header.s=student header.b=Yh2Hp3Ey;
+       spf=pass (google.com: domain of noreply@21-school.ru designates 83.69.219.254 as permitted sender) smtp.mailfrom=noreply@21-school.ru;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=21-school.ru
+Date: Wed, 18 Nov 2020 09:43:09 -0800 (PST)
+Message-ID: <5fb55d2d.1c69fb81.94232.939aSMTPIN_ADDED_MISSING@mx.google.com>
+Received: by student.21-school.ru (Postfix)
+	id 94604607ED; Wed, 18 Nov 2020 20:43:09 +0300 (MSK)
+Delivered-To: cwatcher@student.21-school.ru
+Received: from moulinette.msk.21.school.ru (unknown [192.168.50.136])
+	by student.21-school.ru (Postfix) with ESMTP id 64AB560083
+	for <cwatcher@student.21-school.ru>; Wed, 18 Nov 2020 20:43:09 +0300 (MSK)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=21-school.ru;
+	s=student; t=1605721389;
+	bh=uuki1HiyU+d+vtnnJuK6kbHHudb47+c7kxe/iFufx0g=;
+	h=Subject:From:To:From;
+	b=Yh2Hp3EyJFBBLkT3fLJJpQ4evWa3EDQnSQD5dXbv8cuj57zkKjEhb9lPxFfhYnwdu
+	 CQmlnRcGcy1hFToJqZxGLtT6vnc2pLlqVSn1KauOiJQhxFPa5hzC5VOBd3xnmt66gj
+	 cZW7nQFymPKyBmu/JYCbsbGU7QaAYeGAH9xz6348=
+Content-Type: multipart/mixed; boundary="===============0376740669143895349=="
+MIME-Version: 1.0
+Subject: [Deepthought] Your trace for 42cursus-libft
+From: noreply@21-school.ru
+From_Alias: deepthought
+To: cwatcher@student.21-school.ru
+
+--===============0376740669143895349==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+= Host-specific information ====================================================
+$> hostname; uname -msr
+ox-v6.msk.21-school.ru
+Darwin 18.7.0 x86_64
+$> date
+Wed Nov 18 20:41:53 MSK 2020
+$> gcc --version
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk/usr/include/c++/4.2.1
+Apple clang version 11.0.0 (clang-1100.0.33.17)
+Target: x86_64-apple-darwin18.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+$> clang --version
+Apple clang version 11.0.0 (clang-1100.0.33.17)
+Target: x86_64-apple-darwin18.7.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: git@vogsphere.msk.21-school.ru:vogsphere/intra-uuid-5594ece6-a47d-49e0-bcb7-e5b3db19ca3d-3364954
+
+= Git history ==================================================================
+$> git -C /tmp/tmpCz95bS/user log --pretty='%H - %an, %ad : %s'
+deed71017bcc43f718c2bff29a3c0b0b0552e09f - Carmine Watcher, Wed Nov 18 13:10:02 2020 +0300 : [norm]
+5d569fc83e2372c0d4ddd757796034ce6af1536e - Carmine Watcher, Wed Nov 18 12:41:36 2020 +0300 : [rf] n -> *p
+700705855e95abf8c4a58bd07454ba25a3fd4199 - Carmine Watcher, Mon Nov 16 21:11:52 2020 +0300 : (char)
+4375a031d522ecb3b219a6e5ce5bc4b553367e56 - Carmine Watcher, Mon Nov 16 21:08:56 2020 +0300 : [bugfix] freestrs()
+7fabd932164f9650d841ab32d6fc4b4614922513 - Carmine Watcher, Mon Nov 16 21:05:27 2020 +0300 : ar rcs
+a2ab84558da8b6a3170dd224fbd7b5aa53f59339 - Carmine Watcher, Mon Nov 16 15:27:11 2020 +0300 : [rf] ->_bonus.c
+a2827fd85e7e79169456816552d70d2b1d8517f6 - Carmine Watcher, Mon Nov 16 12:49:21 2020 +0300 : [done] putnbr
+3f13d4bb78016a82b9ab633ceb33ddd69d4011ba - Carmine Watcher, Sun Nov 15 20:54:09 2020 +0300 : += put* (part2)
+0f3c182294b5816cb197f8e027f0fabf2ebb5266 - Carmine Watcher, Sun Nov 15 20:53:42 2020 +0300 : += lst* (remaining)
+4c4cccc0a8396c1c56a68edfa67504ffdd3839d5 - Carmine Watcher, Sun Nov 15 17:33:44 2020 +0300 : [norm]
+755054be1f223b2e0fc5eb9d9ccbd8c74f83bc96 - Carmine Watcher, Sun Nov 15 17:10:49 2020 +0300 : [partial] += lst*
+3313421f50906a8d97b56d59d48eb04ce22927c2 - Carmine Watcher, Sat Nov 14 11:52:17 2020 +0300 : += putchar_fd
+da8208a1f8bd453aa1078e4bc696b32891e3dc57 - Carmine Watcher, Sat Nov 14 11:43:47 2020 +0300 : [norm]
+3738cb8b04caad14cec8be2ef3c7bdf108706592 - Carmine Watcher, Sat Nov 14 11:40:41 2020 +0300 : += strmapi
+22e43e5ab7fd09c088c057bd5ad47c06fa79d3af - Carmine Watcher, Fri Nov 13 17:44:44 2020 +0300 : += itoa
+7e329647f10f45b70694eaebf007bca510c3c51d - Carmine Watcher, Fri Nov 13 12:47:11 2020 +0300 : split on char
+0eae165807f3f9fb88dc61ebb23dd12b3f863168 - Carmine Watcher, Fri Nov 13 12:45:42 2020 +0300 : += isspace
+18fedf4815a6e57b3942140bed7b7d38992d254d - Carmine, Thu Nov 12 20:12:51 2020 +0300 : while (*(s = findwd(s)))
+d4ddbfea921d63d84c6e1ebdf018a2194085e5fe - Carmine Watcher, Thu Nov 12 12:53:51 2020 +0300 : += strstr()
+89fe795ff74dc117dd88bcab6674b0072a21b24d - Carmine Watcher, Thu Nov 12 12:53:30 2020 +0300 : [squash] += substr
+5b83325583e95360be1c4e11b26332cf803215dd - Carmine Watcher, Thu Nov 12 12:52:50 2020 +0300 : [squash] += substr
+6ec113d60384a7c76bda786a328755e120e896f5 - Carmine Watcher, Thu Nov 12 12:52:11 2020 +0300 : += split (on whitespaces)
+9fa9d50feeecb47dfdbbac5f97d16539c857752e - Carmine Watcher, Thu Nov 12 12:50:54 2020 +0300 : += substr
+3f515624aef176dad2aca2a8ab0739bbc6ae7953 - Carmine Watcher, Thu Nov 12 12:48:47 2020 +0300 : [squash] += strtrim
+e2e7dd4e27629a5bd000a5be151de0cc83c63345 - Carmine Watcher, Thu Nov 12 12:14:39 2020 +0300 : [squash] += strjoin
+f9fdd4795f9dc2e613169e17a60751e43f7ec7a5 - Carmine Watcher, Thu Nov 12 12:07:42 2020 +0300 : += strtrim
+eb089438075d1fdf767088b654460781154224e3 - Carmine Watcher, Thu Nov 12 12:05:49 2020 +0300 : += strjoin
+e7c3722280e8089cfd915f9748ad9239a79a22bb - Carmine Watcher, Thu Nov 12 12:02:44 2020 +0300 : -= 	size_t	m;
+4bd5222b7b3c917e013c4a0913fae5180211b74b - Carmine Watcher, Thu Nov 12 12:00:46 2020 +0300 : 	if (c == *s) -> if (!c)
+2604e25ac2590dc80c8fb585016b0f2929f07c02 - Carmine Watcher, Thu Nov 12 11:54:43 2020 +0300 : += ft_to*()
+6a0e7613bd38bb98d478126f544a51dba946a53c - Carmine Watcher, Thu Nov 12 11:53:11 2020 +0300 : += ft_is*()
+72ae78aa518b5e3a715a7e34328cffd81af78f98 - Carmine Watcher, Mon Nov 9 17:15:29 2020 +0300 : += remaining part 1 str*()
+73cbbe560613e91ad4816bc77e9db44cc76ceefe - Carmine Watcher, Mon Nov 9 12:42:29 2020 +0300 : -= #include "libft.h"
+a722a147fa05fb540cafdb35ab19e6d6c17d2548 - Carmine Watcher, Sun Nov 8 12:38:35 2020 +0300 : += .DS_Store
+356bd72a04c479754bd04adf50f9acff49ad8083 - Carmine Watcher, Sun Nov 8 12:36:59 2020 +0300 : += missing mem files
+bf11e7f43fb39c24bcf6e1ae96c110f5cb79cefb - Carmine Watcher, Sun Nov 8 12:31:31 2020 +0300 : if (dst != src)
+0b3c8fccd1253d0f56d5297228e3392853ccc035 - Carmine Watcher, Sat Nov 7 17:42:33 2020 +0300 : [squash] Merge branch 'master' of vogsphere.msk.21-school.ru:vogsphere/intra-uuid-5594ece6-a47d-49e0-bcb7-e5b3db19ca3d-3364954
+44f92af3cf19f7ca77a644f9206d24fb3f740c86 - Carmine Watcher, Sat Nov 7 16:17:17 2020 +0300 : libft.h = part1
+c2daefb274e60c508c5bd98781f0bfd5f92fcc9a - Carmine Watcher, Sat Nov 7 16:17:17 2020 +0300 : libft.h = part1
+70c97c236326456e0d636106842c4448ba4e0b35 - Carmine Watcher, Sat Nov 7 16:00:40 2020 +0300 : += so
+6a1e2a9127a89c3ff243d1b8e0f44ac22a7347e1 - Carmine Watcher, Sat Nov 7 14:10:02 2020 +0300 : [squash] Merge branch 'master' of https://github.com/AlxVSeti/libft
+302c0153a0f9b4a58a0fa109f16d66d197bb9c71 - Carmine Watcher, Sat Nov 7 13:43:41 2020 +0300 : += atoi(), strdup(). Makefile += so
+cddb48b3f8ac4341eb8e850d1c06004bafee61d4 - Carmine Watcher, Sat Nov 7 13:43:41 2020 +0300 : += atoi(), strdup(). Makefile += so
+b8d614c73842d47a1d205d6494a8d397886c005b - Alex, Fri Nov 6 14:57:35 2020 +0300 : += .vs
+d1ed2fdba37e7ee1f58a236f106e6e8aacc11227 - Carmine Watcher, Thu Nov 5 17:58:36 2020 +0300 : += memccpy
+03b0c2f1805be2c986ba46ad229ff1aaf26b02c7 - Carmine Watcher, Thu Nov 5 14:12:06 2020 +0300 : += .gitignore
+7d8583b4f707e0f5452bb3e1973af7960cd064da - Carmine Watcher, Thu Nov 5 13:34:44 2020 +0300 : += strlcpy()
+7cf468b8dbb9b89320833d4f9540256647f3031b - Carmine Watcher, Wed Nov 4 15:48:25 2020 +0300 : += libft.h
+3c14eddd0b5507e28b29296c23b78c61b8af51b0 -  , Wed Nov 4 15:45:26 2020 +0300 : [bugfix] NAME
+3e2e8713e829cae14ddc327cc1b8206523e14aa7 -  , Tue Nov 3 22:31:19 2020 +0300 : boilerplate
+ 
+= Collected files ==========================================
+$> ls -lAR /tmp/tmpCz95bS/user
+total 424
+-rw-r--r--  1 root  wheel     27 Nov 18 20:42 .gitignore
+-rw-r--r--  1 root  wheel   1990 Nov 18 20:42 Makefile
+-rw-r--r--  1 root  wheel  14546 Nov 18 20:42 __GIT_HISTORY
+-rw-r--r--  1 root  wheel   1259 Nov 18 20:42 ft_atoi.c
+-rw-r--r--  1 root  wheel    998 Nov 18 20:42 ft_bzero.c
+-rw-r--r--  1 root  wheel   1086 Nov 18 20:42 ft_calloc.c
+-rw-r--r--  1 root  wheel    980 Nov 18 20:42 ft_isalnum.c
+-rw-r--r--  1 root  wheel    962 Nov 18 20:42 ft_isalpha.c
+-rw-r--r--  1 root  wheel    948 Nov 18 20:42 ft_isascii.c
+-rw-r--r--  1 root  wheel    953 Nov 18 20:42 ft_isdigit.c
+-rw-r--r--  1 root  wheel    955 Nov 18 20:42 ft_isprint.c
+-rw-r--r--  1 root  wheel   1023 Nov 18 20:42 ft_isspace_bonus.c
+-rw-r--r--  1 root  wheel   1274 Nov 18 20:42 ft_itoa.c
+-rw-r--r--  1 root  wheel   1077 Nov 18 20:42 ft_lstadd_back.c
+-rw-r--r--  1 root  wheel   1018 Nov 18 20:42 ft_lstadd_front.c
+-rw-r--r--  1 root  wheel   1091 Nov 18 20:42 ft_lstclear.c
+-rw-r--r--  1 root  wheel   1008 Nov 18 20:42 ft_lstdelone.c
+-rw-r--r--  1 root  wheel   1041 Nov 18 20:42 ft_lstiter.c
+-rw-r--r--  1 root  wheel   1010 Nov 18 20:42 ft_lstlast.c
+-rw-r--r--  1 root  wheel   1282 Nov 18 20:42 ft_lstmap.c
+-rw-r--r--  1 root  wheel   1084 Nov 18 20:42 ft_lstnew.c
+-rw-r--r--  1 root  wheel   1081 Nov 18 20:42 ft_lstsize.c
+-rw-r--r--  1 root  wheel   1207 Nov 18 20:42 ft_memccpy.c
+-rw-r--r--  1 root  wheel   1104 Nov 18 20:42 ft_memchr.c
+-rw-r--r--  1 root  wheel   1141 Nov 18 20:42 ft_memcmp.c
+-rw-r--r--  1 root  wheel   1107 Nov 18 20:42 ft_memcpy.c
+-rw-r--r--  1 root  wheel   1194 Nov 18 20:42 ft_memmove.c
+-rw-r--r--  1 root  wheel   1044 Nov 18 20:42 ft_memset.c
+-rw-r--r--  1 root  wheel    979 Nov 18 20:42 ft_putchar_fd.c
+-rw-r--r--  1 root  wheel   1046 Nov 18 20:42 ft_putendl_fd.c
+-rw-r--r--  1 root  wheel   1154 Nov 18 20:42 ft_putnbr_fd.c
+-rw-r--r--  1 root  wheel   1013 Nov 18 20:42 ft_putstr_fd.c
+-rw-r--r--  1 root  wheel   1880 Nov 18 20:42 ft_split.c
+-rw-r--r--  1 root  wheel   1024 Nov 18 20:42 ft_strchr.c
+-rw-r--r--  1 root  wheel   1107 Nov 18 20:42 ft_strdup.c
+-rw-r--r--  1 root  wheel   1196 Nov 18 20:42 ft_strjoin.c
+-rw-r--r--  1 root  wheel   1134 Nov 18 20:42 ft_strlcat.c
+-rw-r--r--  1 root  wheel   1233 Nov 18 20:42 ft_strlcpy.c
+-rw-r--r--  1 root  wheel   1008 Nov 18 20:42 ft_strlen.c
+-rw-r--r--  1 root  wheel   1276 Nov 18 20:42 ft_strmapi.c
+-rw-r--r--  1 root  wheel   1139 Nov 18 20:42 ft_strncmp.c
+-rw-r--r--  1 root  wheel   1206 Nov 18 20:42 ft_strndup_bonus.c
+-rw-r--r--  1 root  wheel   1219 Nov 18 20:42 ft_strnstr.c
+-rw-r--r--  1 root  wheel   1073 Nov 18 20:42 ft_strrchr.c
+-rw-r--r--  1 root  wheel   1186 Nov 18 20:42 ft_strstr_bonus.c
+-rw-r--r--  1 root  wheel   1146 Nov 18 20:42 ft_strtrim.c
+-rw-r--r--  1 root  wheel   1141 Nov 18 20:42 ft_substr.c
+-rw-r--r--  1 root  wheel    998 Nov 18 20:42 ft_tolower.c
+-rw-r--r--  1 root  wheel    999 Nov 18 20:42 ft_toupper.c
+-rw-r--r--  1 root  wheel   3091 Nov 18 20:42 libft.h
+ 
+= initial_errors ===============================================================
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_memmove.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_putstr_fd.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_isalnum.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_itoa.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_putchar_fd.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_strlcpy.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_memchr.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_memcpy.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_lstiter.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_strtrim.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_strchr.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_isalpha.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_strmapi.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_lstmap.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_strjoin.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_putnbr_fd.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_memccpy.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_split.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_lstadd_back.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_lstnew.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_strlcat.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_lstdelone.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_lstclear.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_lstadd_front.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_strndup_bonus.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_strnstr.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_strrchr.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_memset.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_isdigit.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_lstlast.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_lstsize.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_calloc.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_atoi.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_isascii.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_substr.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_toupper.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_strlen.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_memcmp.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_strstr_bonus.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_strdup.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_putendl_fd.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_strncmp.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_isprint.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_bzero.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_tolower.c -o compil_single_output 
+
+$> gcc -Wextra -Wall -Werror -Wall -Wextra -Werror -c ft_isspace_bonus.c -o compil_single_output 
+
+$> /usr/bin/norminette  ft_memmove.c ft_putstr_fd.c ft_isalnum.c ft_itoa.c ft_putchar_fd.c ft_strlcpy.c ft_memchr.c ft_memcpy.c ft_lstiter.c ft_strtrim.c ft_strchr.c ft_isalpha.c ft_strmapi.c ft_lstmap.c ft_strjoin.c ft_putnbr_fd.c ft_memccpy.c ft_split.c ft_lstadd_back.c ft_lstnew.c ft_strlcat.c ft_lstdelone.c ft_lstclear.c libft.h ft_lstadd_front.c ft_strndup_bonus.c ft_strnstr.c ft_strrchr.c ft_memset.c ft_isdigit.c ft_lstlast.c ft_lstsize.c ft_calloc.c ft_atoi.c ft_isascii.c ft_substr.c ft_toupper.c ft_strlen.c ft_memcmp.c ft_strstr_bonus.c ft_strdup.c ft_putendl_fd.c ft_strncmp.c ft_isprint.c ft_bzero.c ft_tolower.c ft_isspace_bonus.c | grep -E '^(Error|Warning)'
+
+clang -Wall -Wextra -Werror   -c -o ft_memset.o ft_memset.c
+clang -Wall -Wextra -Werror   -c -o ft_bzero.o ft_bzero.c
+clang -Wall -Wextra -Werror   -c -o ft_calloc.o ft_calloc.c
+clang -Wall -Wextra -Werror   -c -o ft_memcpy.o ft_memcpy.c
+clang -Wall -Wextra -Werror   -c -o ft_memccpy.o ft_memccpy.c
+clang -Wall -Wextra -Werror   -c -o ft_memmove.o ft_memmove.c
+clang -Wall -Wextra -Werror   -c -o ft_memchr.o ft_memchr.c
+clang -Wall -Wextra -Werror   -c -o ft_memcmp.o ft_memcmp.c
+clang -Wall -Wextra -Werror   -c -o ft_strlen.o ft_strlen.c
+clang -Wall -Wextra -Werror   -c -o ft_strlcpy.o ft_strlcpy.c
+clang -Wall -Wextra -Werror   -c -o ft_strlcat.o ft_strlcat.c
+clang -Wall -Wextra -Werror   -c -o ft_strdup.o ft_strdup.c
+clang -Wall -Wextra -Werror   -c -o ft_strchr.o ft_strchr.c
+clang -Wall -Wextra -Werror   -c -o ft_strrchr.o ft_strrchr.c
+clang -Wall -Wextra -Werror   -c -o ft_strnstr.o ft_strnstr.c
+clang -Wall -Wextra -Werror   -c -o ft_strncmp.o ft_strncmp.c
+clang -Wall -Wextra -Werror   -c -o ft_atoi.o ft_atoi.c
+clang -Wall -Wextra -Werror   -c -o ft_isalpha.o ft_isalpha.c
+clang -Wall -Wextra -Werror   -c -o ft_isdigit.o ft_isdigit.c
+clang -Wall -Wextra -Werror   -c -o ft_isalnum.o ft_isalnum.c
+clang -Wall -Wextra -Werror   -c -o ft_isascii.o ft_isascii.c
+clang -Wall -Wextra -Werror   -c -o ft_isprint.o ft_isprint.c
+clang -Wall -Wextra -Werror   -c -o ft_toupper.o ft_toupper.c
+clang -Wall -Wextra -Werror   -c -o ft_tolower.o ft_tolower.c
+clang -Wall -Wextra -Werror   -c -o ft_strtrim.o ft_strtrim.c
+clang -Wall -Wextra -Werror   -c -o ft_substr.o ft_substr.c
+clang -Wall -Wextra -Werror   -c -o ft_strjoin.o ft_strjoin.c
+clang -Wall -Wextra -Werror   -c -o ft_split.o ft_split.c
+clang -Wall -Wextra -Werror   -c -o ft_itoa.o ft_itoa.c
+clang -Wall -Wextra -Werror   -c -o ft_strmapi.o ft_strmapi.c
+clang -Wall -Wextra -Werror   -c -o ft_putchar_fd.o ft_putchar_fd.c
+clang -Wall -Wextra -Werror   -c -o ft_putstr_fd.o ft_putstr_fd.c
+clang -Wall -Wextra -Werror   -c -o ft_putendl_fd.o ft_putendl_fd.c
+clang -Wall -Wextra -Werror   -c -o ft_putnbr_fd.o ft_putnbr_fd.c
+clang -Wall -Wextra -Werror   -c -o ft_strndup_bonus.o ft_strndup_bonus.c
+clang -Wall -Wextra -Werror   -c -o ft_strstr_bonus.o ft_strstr_bonus.c
+clang -Wall -Wextra -Werror   -c -o ft_isspace_bonus.o ft_isspace_bonus.c
+ar rcs libft.a ft_memset.o ft_bzero.o ft_calloc.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strdup.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_strtrim.o ft_substr.o ft_strjoin.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_strndup_bonus.o ft_strstr_bonus.o ft_isspace_bonus.o
+
+rm -f ft_memset.o ft_bzero.o ft_calloc.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strdup.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_strtrim.o ft_substr.o ft_strjoin.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_strndup_bonus.o ft_strstr_bonus.o ft_isspace_bonus.o ft_lstnew.o ft_lstadd_front.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstsize.o ft_lstlast.o ft_lstiter.o ft_lstmap.o
+rm -f libft.a libft.so
+clang -Wall -Wextra -Werror   -c -o ft_memset.o ft_memset.c
+clang -Wall -Wextra -Werror   -c -o ft_bzero.o ft_bzero.c
+clang -Wall -Wextra -Werror   -c -o ft_calloc.o ft_calloc.c
+clang -Wall -Wextra -Werror   -c -o ft_memcpy.o ft_memcpy.c
+clang -Wall -Wextra -Werror   -c -o ft_memccpy.o ft_memccpy.c
+clang -Wall -Wextra -Werror   -c -o ft_memmove.o ft_memmove.c
+clang -Wall -Wextra -Werror   -c -o ft_memchr.o ft_memchr.c
+clang -Wall -Wextra -Werror   -c -o ft_memcmp.o ft_memcmp.c
+clang -Wall -Wextra -Werror   -c -o ft_strlen.o ft_strlen.c
+clang -Wall -Wextra -Werror   -c -o ft_strlcpy.o ft_strlcpy.c
+clang -Wall -Wextra -Werror   -c -o ft_strlcat.o ft_strlcat.c
+clang -Wall -Wextra -Werror   -c -o ft_strdup.o ft_strdup.c
+clang -Wall -Wextra -Werror   -c -o ft_strchr.o ft_strchr.c
+clang -Wall -Wextra -Werror   -c -o ft_strrchr.o ft_strrchr.c
+clang -Wall -Wextra -Werror   -c -o ft_strnstr.o ft_strnstr.c
+clang -Wall -Wextra -Werror   -c -o ft_strncmp.o ft_strncmp.c
+clang -Wall -Wextra -Werror   -c -o ft_atoi.o ft_atoi.c
+clang -Wall -Wextra -Werror   -c -o ft_isalpha.o ft_isalpha.c
+clang -Wall -Wextra -Werror   -c -o ft_isdigit.o ft_isdigit.c
+clang -Wall -Wextra -Werror   -c -o ft_isalnum.o ft_isalnum.c
+clang -Wall -Wextra -Werror   -c -o ft_isascii.o ft_isascii.c
+clang -Wall -Wextra -Werror   -c -o ft_isprint.o ft_isprint.c
+clang -Wall -Wextra -Werror   -c -o ft_toupper.o ft_toupper.c
+clang -Wall -Wextra -Werror   -c -o ft_tolower.o ft_tolower.c
+clang -Wall -Wextra -Werror   -c -o ft_strtrim.o ft_strtrim.c
+clang -Wall -Wextra -Werror   -c -o ft_substr.o ft_substr.c
+clang -Wall -Wextra -Werror   -c -o ft_strjoin.o ft_strjoin.c
+clang -Wall -Wextra -Werror   -c -o ft_split.o ft_split.c
+clang -Wall -Wextra -Werror   -c -o ft_itoa.o ft_itoa.c
+clang -Wall -Wextra -Werror   -c -o ft_strmapi.o ft_strmapi.c
+clang -Wall -Wextra -Werror   -c -o ft_putchar_fd.o ft_putchar_fd.c
+clang -Wall -Wextra -Werror   -c -o ft_putstr_fd.o ft_putstr_fd.c
+clang -Wall -Wextra -Werror   -c -o ft_putendl_fd.o ft_putendl_fd.c
+clang -Wall -Wextra -Werror   -c -o ft_putnbr_fd.o ft_putnbr_fd.c
+clang -Wall -Wextra -Werror   -c -o ft_strndup_bonus.o ft_strndup_bonus.c
+clang -Wall -Wextra -Werror   -c -o ft_strstr_bonus.o ft_strstr_bonus.c
+clang -Wall -Wextra -Werror   -c -o ft_isspace_bonus.o ft_isspace_bonus.c
+ar rcs libft.a ft_memset.o ft_bzero.o ft_calloc.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strdup.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_strtrim.o ft_substr.o ft_strjoin.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_strndup_bonus.o ft_strstr_bonus.o ft_isspace_bonus.o
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+$> cp libft.a /tmp/tmpCz95bS/ref/libft.a
+
+Grade: 1
+
+= test_ft_atoi =================================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_atoi
+ [*] ft_atoi : [OK]
+
+OK
+Grade: 3
+
+= test_ft_bzero ================================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_bzero
+ [*] ft_bzero : [OK]
+
+OK
+Grade: 1
+
+= test_ft_calloc ===============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_calloc
+ [*] ft_calloc : [OK]
+
+OK
+Grade: 3
+
+= test_ft_isalnum ==============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_isalnum
+ [*] ft_isalnum : [OK]
+
+OK
+Grade: 3
+
+= test_ft_isalpha ==============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_isalpha
+ [*] ft_isalpha : [OK]
+
+OK
+Grade: 2
+
+= test_ft_isascii ==============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_isascii
+ [*] ft_isascii : [OK]
+
+OK
+Grade: 3
+
+= test_ft_isdigit ==============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_isdigit
+ [*] ft_isdigit : [OK]
+
+OK
+Grade: 3
+
+= test_ft_isprint ==============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_isprint
+ [*] ft_isprint : [OK]
+
+OK
+Grade: 3
+
+= test_ft_itoa =================================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_itoa
+ [*] ft_itoa : [OK]
+
+OK
+Grade: 3
+
+= test_ft_memccpy ==============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_memccpy
+ [*] ft_memccpy : [OK]
+
+OK
+Grade: 3
+
+= test_ft_memchr ===============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_memchr
+ [*] ft_memchr : [OK]
+
+OK
+Grade: 3
+
+= test_ft_memcmp ===============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_memcmp
+ [*] ft_memcmp : [OK]
+
+OK
+Grade: 3
+
+= test_ft_memcpy ===============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_memcpy
+ [*] ft_memcpy : [OK]
+
+OK
+Grade: 3
+
+= test_ft_memmove ==============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_memmove
+ [*] ft_memmove : [OK]
+
+OK
+Grade: 3
+
+= test_ft_memset ===============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_memset
+ [*] ft_memset : [OK]
+
+OK
+Grade: 3
+
+= test_ft_putchar_fd ===========================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_putchar_fd
+ [*] ft_putchar_fd : [OK]
+
+OK
+Grade: 3
+
+= test_ft_putendl_fd ===========================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_putendl_fd
+ [*] ft_putendl_fd : [OK]
+
+OK
+Grade: 3
+
+= test_ft_putnbr_fd ============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_putnbr_fd
+ [*] ft_putnbr_fd : [OK]
+
+OK
+Grade: 3
+
+= test_ft_putstr_fd ============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_putstr_fd
+ [*] ft_putstr_fd : [OK]
+
+OK
+Grade: 3
+
+= test_ft_split ================================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_split
+ [*] ft_split : [OK]
+
+OK
+Grade: 3
+
+= test_ft_strchr ===============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_strchr
+ [*] ft_strchr : [OK]
+
+OK
+Grade: 3
+
+= test_ft_strdup ===============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_strdup
+ [*] ft_strdup : [OK]
+
+OK
+Grade: 3
+
+= test_ft_strjoin ==============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_strjoin
+ [*] ft_strjoin : [OK]
+
+OK
+Grade: 3
+
+= test_ft_strlcat ==============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_strlcat
+ [*] ft_strlcat : [OK]
+
+OK
+Grade: 3
+
+= test_ft_strlcpy ==============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_strlcpy
+ [*] ft_strlcpy : [OK]
+
+OK
+Grade: 3
+
+= test_ft_strlen ===============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_strlen
+ [*] ft_strlen : [OK]
+
+OK
+Grade: 3
+
+= test_ft_strmapi ==============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_strmapi
+ [*] ft_strmapi : [OK]
+
+OK
+Grade: 3
+
+= test_ft_strncmp ==============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_strncmp
+ [*] ft_strncmp : [OK]
+
+OK
+Grade: 3
+
+= test_ft_strnstr ==============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_strnstr
+ [*] ft_strnstr : [OK]
+
+OK
+Grade: 3
+
+= test_ft_strrchr ==============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_strrchr
+ [*] ft_strrchr : [OK]
+
+OK
+Grade: 3
+
+= test_ft_strtrim ==============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_strtrim
+ [*] ft_strtrim : [OK]
+
+OK
+Grade: 3
+
+= test_ft_substr ===============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_substr
+ [*] ft_substr : [OK]
+
+OK
+Grade: 3
+
+= test_ft_tolower ==============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_tolower
+ [*] ft_tolower : [OK]
+
+OK
+Grade: 3
+
+= test_ft_toupper ==============================================================
+$> cp /tmp/tmpCz95bS/ref/libft.a libft.a
+
+-rw-r--r--  1 deepthought  deepthought  34424 Nov 18 17:42 libft.a
+
+Testing ft_toupper
+ [*] ft_toupper : [OK]
+
+OK
+Grade: 3
+
+= bonus ========================================================================
+clang -Wall -Wextra -Werror   -c -o ft_lstnew.o ft_lstnew.c
+clang -Wall -Wextra -Werror   -c -o ft_lstadd_front.o ft_lstadd_front.c
+clang -Wall -Wextra -Werror   -c -o ft_lstadd_back.o ft_lstadd_back.c
+clang -Wall -Wextra -Werror   -c -o ft_lstdelone.o ft_lstdelone.c
+clang -Wall -Wextra -Werror   -c -o ft_lstclear.o ft_lstclear.c
+clang -Wall -Wextra -Werror   -c -o ft_lstsize.o ft_lstsize.c
+clang -Wall -Wextra -Werror   -c -o ft_lstlast.o ft_lstlast.c
+clang -Wall -Wextra -Werror   -c -o ft_lstiter.o ft_lstiter.c
+clang -Wall -Wextra -Werror   -c -o ft_lstmap.o ft_lstmap.c
+clang -Wall -Wextra -Werror   -c -o ft_memset.o ft_memset.c
+clang -Wall -Wextra -Werror   -c -o ft_bzero.o ft_bzero.c
+clang -Wall -Wextra -Werror   -c -o ft_calloc.o ft_calloc.c
+clang -Wall -Wextra -Werror   -c -o ft_memcpy.o ft_memcpy.c
+clang -Wall -Wextra -Werror   -c -o ft_memccpy.o ft_memccpy.c
+clang -Wall -Wextra -Werror   -c -o ft_memmove.o ft_memmove.c
+clang -Wall -Wextra -Werror   -c -o ft_memchr.o ft_memchr.c
+clang -Wall -Wextra -Werror   -c -o ft_memcmp.o ft_memcmp.c
+clang -Wall -Wextra -Werror   -c -o ft_strlen.o ft_strlen.c
+clang -Wall -Wextra -Werror   -c -o ft_strlcpy.o ft_strlcpy.c
+clang -Wall -Wextra -Werror   -c -o ft_strlcat.o ft_strlcat.c
+clang -Wall -Wextra -Werror   -c -o ft_strdup.o ft_strdup.c
+clang -Wall -Wextra -Werror   -c -o ft_strchr.o ft_strchr.c
+clang -Wall -Wextra -Werror   -c -o ft_strrchr.o ft_strrchr.c
+clang -Wall -Wextra -Werror   -c -o ft_strnstr.o ft_strnstr.c
+clang -Wall -Wextra -Werror   -c -o ft_strncmp.o ft_strncmp.c
+clang -Wall -Wextra -Werror   -c -o ft_atoi.o ft_atoi.c
+clang -Wall -Wextra -Werror   -c -o ft_isalpha.o ft_isalpha.c
+clang -Wall -Wextra -Werror   -c -o ft_isdigit.o ft_isdigit.c
+clang -Wall -Wextra -Werror   -c -o ft_isalnum.o ft_isalnum.c
+clang -Wall -Wextra -Werror   -c -o ft_isascii.o ft_isascii.c
+clang -Wall -Wextra -Werror   -c -o ft_isprint.o ft_isprint.c
+clang -Wall -Wextra -Werror   -c -o ft_toupper.o ft_toupper.c
+clang -Wall -Wextra -Werror   -c -o ft_tolower.o ft_tolower.c
+clang -Wall -Wextra -Werror   -c -o ft_strtrim.o ft_strtrim.c
+clang -Wall -Wextra -Werror   -c -o ft_substr.o ft_substr.c
+clang -Wall -Wextra -Werror   -c -o ft_strjoin.o ft_strjoin.c
+clang -Wall -Wextra -Werror   -c -o ft_split.o ft_split.c
+clang -Wall -Wextra -Werror   -c -o ft_itoa.o ft_itoa.c
+clang -Wall -Wextra -Werror   -c -o ft_strmapi.o ft_strmapi.c
+clang -Wall -Wextra -Werror   -c -o ft_putchar_fd.o ft_putchar_fd.c
+clang -Wall -Wextra -Werror   -c -o ft_putstr_fd.o ft_putstr_fd.c
+clang -Wall -Wextra -Werror   -c -o ft_putendl_fd.o ft_putendl_fd.c
+clang -Wall -Wextra -Werror   -c -o ft_putnbr_fd.o ft_putnbr_fd.c
+clang -Wall -Wextra -Werror   -c -o ft_strndup_bonus.o ft_strndup_bonus.c
+clang -Wall -Wextra -Werror   -c -o ft_strstr_bonus.o ft_strstr_bonus.c
+clang -Wall -Wextra -Werror   -c -o ft_isspace_bonus.o ft_isspace_bonus.c
+ar rcs libft.a ft_memset.o ft_bzero.o ft_calloc.o ft_memcpy.o ft_memccpy.o ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o ft_strlcpy.o ft_strlcat.o ft_strdup.o ft_strchr.o ft_strrchr.o ft_strnstr.o ft_strncmp.o ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o ft_strtrim.o ft_substr.o ft_strjoin.o ft_split.o ft_itoa.o ft_strmapi.o ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_strndup_bonus.o ft_strstr_bonus.o ft_isspace_bonus.o
+ar rcs libft.a ft_lstnew.o ft_lstadd_front.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstsize.o ft_lstlast.o ft_lstiter.o ft_lstmap.o
+
+Testing ft_lstadd_back
+ [*] ft_lstadd_back : [OK]
+
+Testing ft_lstadd_front
+ [*] ft_lstadd_front : [OK]
+
+Testing ft_lstclear
+ [*] ft_lstclear : [OK]
+
+Testing ft_lstdelone
+ [*] ft_lstdelone : [OK]
+
+Testing ft_lstiter
+ [*] ft_lstiter : [OK]
+
+Testing ft_lstlast
+ [*] ft_lstlast : [OK]
+
+Testing ft_lstmap
+ [*] ft_lstmap : [OK]
+
+Testing ft_lstnew
+ [*] ft_lstnew : [OK]
+
+Testing ft_lstsize
+ [*] ft_lstsize : [OK]
+
+RESULTS:
+ [*] ft_lstadd_back.c: [OK]
+ [*] ft_lstadd_front.c: [OK]
+ [*] ft_lstclear.c: [OK]
+ [*] ft_lstdelone.c: [OK]
+ [*] ft_lstiter.c: [OK]
+ [*] ft_lstlast.c: [OK]
+ [*] ft_lstmap.c: [OK]
+ [*] ft_lstnew.c: [OK]
+ [*] ft_lstsize.c: [OK]
+
+9/9 functions correct
+Grade: 15
+
+= Final grade: 115 =============================================================
+
+--===============0376740669143895349==--
