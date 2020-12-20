@@ -6,7 +6,7 @@
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 13:07:03 by CWatcher          #+#    #+#             */
-/*   Updated: 2020/11/16 13:08:01 by CWatcher         ###   ########.fr       */
+/*   Updated: 2020/12/20 17:32:52 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 char	*ft_strstr(const char *s, const char *s2)
 {
 	size_t	j;
-
 
 	if (!s || !s2)
 		return (NULL);
