@@ -6,7 +6,7 @@
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 10:32:52 by CWatcher          #+#    #+#             */
-/*   Updated: 2020/11/11 10:33:23 by CWatcher         ###   ########.fr       */
+/*   Updated: 2020/11/23 14:24:59 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char *s0;
 	char *s;
 
+	if (!s1 && !s2)
+		return (NULL);
 	if ((s0 = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char))))
 	{
 		s = s0;
