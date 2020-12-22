@@ -6,7 +6,7 @@
 #    By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/15 16:37:00 by CWatcher          #+#    #+#              #
-#    Updated: 2020/11/18 13:50:35 by CWatcher         ###   ########.fr        #
+#    Updated: 2020/11/25 15:48:21 by CWatcher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,15 +31,16 @@ OBJ_B	= $(SRC_B:.c=.o)
 NAME	= libft.a
 SO		= libft.so
 CC		= clang
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -O0
 AR		= ar rcs
 
-$(NAME):	$(OBJ)
+$(NAME):	$(OBJ) Makefile
 	$(AR) $@ $?
 
 all:		$(NAME)
 
-c.o.:		libft.h
+%.o:		%.c libft.h
+	$(CC) $(CFLAGS) -c $<
 
 clean:
 	$(RM) $(OBJ) $(OBJ_B)

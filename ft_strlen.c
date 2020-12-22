@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
+/*   By: CWatcher <cwatcher@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 14:47:45 by cwatcher          #+#    #+#             */
-/*   Updated: 2020/11/04 12:51:18 by CWatcher         ###   ########.fr       */
+/*   Updated: 2020/12/16 16:35:42 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t n;
+	const char *p = s;
 
-	n = 0;
-	while (s && s[n])
-		++n;
-	return (n);
+	while (*p)
+		p++;
+	return (p - s);
 }
