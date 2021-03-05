@@ -3,33 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
+/*   By: CWatcher <cwatcher@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 20:07:37 by cwatcher          #+#    #+#             */
-/*   Updated: 2020/11/07 14:07:43 by CWatcher         ###   ########.fr       */
+/*   Updated: 2021/03/05 13:57:36 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *nptr)
+#include "libft.h"
+
+int	ft_atoi(char *s)
 {
 	int	i;
 	int	sn;
 
 	i = 0;
 	sn = 1;
-	while (*nptr == ' ' || *nptr == '\t' || *nptr == '\n' || *nptr == '\r' ||
-			*nptr == '\f' || *nptr == '\v')
-		++nptr;
-	if (*nptr == '+' || *nptr == '-')
+	while (ft_strchr(" \t\n\r\f\v", *s))
+		++s;
+	if (*s == '+' || *s == '-')
 	{
-		if (*nptr == '-')
-			sn *= -1;
-		++nptr;
+		if (*s == '-')
+			sn = -1;
+		++s;
 	}
-	while (*nptr >= '0' && *nptr <= '9')
+	while (*s >= '0' && *s <= '9')
 	{
-		i = i * 10 + *nptr - '0';
-		++nptr;
+		i = i * 10 + (*s - '0');
+		++s;
 	}
 	return (sn * i);
 }
