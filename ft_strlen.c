@@ -6,7 +6,7 @@
 /*   By: CWatcher <cwatcher@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 14:47:45 by cwatcher          #+#    #+#             */
-/*   Updated: 2020/12/16 16:35:42 by CWatcher         ###   ########.fr       */
+/*   Updated: 2021/03/05 13:21:37 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ size_t	ft_strlen(const char *s)
 {
 	const char *p = s;
 
-	while (*p)
+	while (p && *p)
 		p++;
 	return (p - s);
 }
