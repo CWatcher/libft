@@ -29,7 +29,7 @@ unsigned	ft_atou_skip(char **ps)
 		if (n <= prev_n)
 		{
 			n = prev_n;
-			break;
+			break ; //TODO remove break
 		}
 	}
 	while (ft_isdigit(**ps))
