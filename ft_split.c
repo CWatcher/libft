@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
+/*   By: CWatcher <cwatcher@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 19:25:15 by CWatcher          #+#    #+#             */
-/*   Updated: 2020/11/19 16:34:06 by CWatcher         ###   ########.fr       */
+/*   Updated: 2021/06/12 22:33:02 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,6 @@ static size_t	ft_wdlen(const char *s, char delim)
 	return (n);
 }
 
-static char		*ft_skipchr(const char *s, char delim)
-{
-	while (s && *s && *s == delim)
-		s++;
-	return (char *)s;
-}
-
 static size_t	ft_wdcount(const char *s, char delim)
 {
 	size_t n;
@@ -43,7 +36,7 @@ static size_t	ft_wdcount(const char *s, char delim)
 	return (n);
 }
 
-static char		**ft_freestrs(char **ps)
+char		**ft_freestrs(char **ps)
 {
 	char **pp;
 
