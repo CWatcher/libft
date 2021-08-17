@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: CWatcher <cwatcher@student.21-school.ru>   +#+  +:+       +#+        */
+/*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 20:07:37 by cwatcher          #+#    #+#             */
-/*   Updated: 2021/03/06 21:10:18 by CWatcher         ###   ########.fr       */
+/*   Updated: 2021/08/18 15:13:46 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,14 @@ int	ft_atoi(char *s)
 	int	i;
 	int	sn;
 
+	if (!s || *s == '\0')
+		return (0);
 	i = 0;
 	while (ft_strchr(" \t\n\r\f\v", *s))
 		++s;
-	sn = *s == '-' ? -1 : 1;
+	sn = 1;
+	if (*s == '-')
+		sn = -1;
 	s += (*s == '+' || *s == '-');
 	while (*s >= '0' && *s <= '9')
 	{
