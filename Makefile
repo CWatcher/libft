@@ -32,9 +32,9 @@ OBJ		= $(SRC:.c=.o)
 OBJ_B	= $(SRC_B:.c=.o)
 OBJ_MY	= $(SRC_MY:.c=.o)
 NAME	= libft.a
-SO		= libft.so
-CC		= clang
-CFLAGS	= -Wall -Wextra -Werror -Os
+SO		= $(NAME:.a=.so)
+CC		= cc
+CFLAGS	= -Wall -Wextra -Werror
 AR		= ar rcs
 
 $(NAME):	$(OBJ) Makefile
@@ -42,11 +42,12 @@ $(NAME):	$(OBJ) Makefile
 
 all:		$(NAME)
 
-%.o:		%.c libft.h
-	$(CC) $(CFLAGS) -c $<
+%.o:	%.c Makefile
+	$(CC) $(CFLAGS) -MMD -c $<
 
+-include	$(SRC:.c=.d)
 clean:
-	$(RM) $(OBJ) $(OBJ_B)
+	$(RM) $(OBJ) $(OBJ_B) $(SRC:.c=.d)
 
 fclean:		clean
 	$(RM) $(NAME) $(SO)
