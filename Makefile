@@ -25,7 +25,8 @@ SRC		= ft_memset.c ft_bzero.c ft_calloc.c \
 SRC_B	= ft_lstnew.c ft_lstadd_front.c ft_lstadd_back.c \
 		  ft_lstdelone.c ft_lstclear.c ft_lstsize.c ft_lstlast.c \
 		  ft_lstiter.c ft_lstmap.c
-SRC_MY	= ft_atou_skip.c
+SRC_MY	= ft_atou_skip.c \
+		  get_next_line.c
 
 OBJ		= $(SRC:.c=.o)
 OBJ_B	= $(SRC_B:.c=.o)
