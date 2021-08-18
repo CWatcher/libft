@@ -6,7 +6,7 @@
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 15:40:17 by CWatcher          #+#    #+#             */
-/*   Updated: 2020/11/24 05:16:14 by CWatcher         ###   ########.fr       */
+/*   Updated: 2021/08/18 15:02:57 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	unsigned char		*d;
 	const unsigned char	*s;
 
+	if (n <= 0 || !dst || !src)
+		return (NULL);
 	d = dst;
 	s = src;
 	while (n--)
