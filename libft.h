@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: CWatcher <cwatcher@student.21-school.ru>   +#+  +:+       +#+        */
+/*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 12:32:57 by CWatcher          #+#    #+#             */
-/*   Updated: 2021/03/10 17:30:04 by CWatcher         ###   ########.fr       */
+/*   Updated: 2021/08/18 19:41:13 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 # define LIBFT_H
 
 # include <stddef.h>
-# include <_types/_uint8_t.h>
 
-typedef	struct	s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}				t_list;
+}	t_list;
 
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
@@ -41,8 +40,7 @@ char			*ft_strstr(const char *s, const char *s2);
 char			*ft_strnstr(const char *s, const char *s2, size_t n);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_atoi(char *str);
-unsigned		ft_atou_skip(char **ps);
-uint8_t			ft_atob_skip(char **ps);
+unsigned int	ft_atou_skip(char **ps);
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
 int				ft_isalnum(int c);

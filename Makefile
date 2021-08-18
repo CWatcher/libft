@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: CWatcher <cwatcher@student.21-school.ru>   +#+  +:+       +#+         #
+#    By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/15 16:37:00 by CWatcher          #+#    #+#              #
-#    Updated: 2021/03/10 17:28:48 by CWatcher         ###   ########.fr        #
+#    Updated: 2021/08/17 11:47:56 by CWatcher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,7 @@ SRC		= ft_memset.c ft_bzero.c ft_calloc.c \
 SRC_B	= ft_lstnew.c ft_lstadd_front.c ft_lstadd_back.c \
 		  ft_lstdelone.c ft_lstclear.c ft_lstsize.c ft_lstlast.c \
 		  ft_lstiter.c ft_lstmap.c
-SRC_MY	= ft_atou_skip.c \
- 		  ft_atob_skip.c
+SRC_MY	= ft_atou_skip.c
 
 OBJ		= $(SRC:.c=.o)
 OBJ_B	= $(SRC_B:.c=.o)
@@ -57,7 +56,7 @@ bonus:	$(OBJ_B) all
 	$(AR) $(NAME) $(OBJ_B)
 
 my:	$(OBJ_MY) bonus
-	$(AR) $(NAME) $(OBJ_B)
+	$(AR) $(NAME) $(OBJ_MY)
 
 so:
 	$(CC) $(CFLAGS) -fpic -c $(SRC)
