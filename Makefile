@@ -68,14 +68,15 @@ CFLAGS	= -Wall -Wextra -Werror
 AR		= ar rcs
 
 $(NAME):	$(OBJ) Makefile
-	$(AR) $@ $?
-
-all:		$(NAME)
+	$(AR) $@ $(OBJ)
 
 %.o:	%.c Makefile
 	$(CC) $(CFLAGS) -MMD -c $<
 
 -include	$(SRC:.c=.d)
+
+all:		$(NAME)
+
 clean:
 	$(RM) $(OBJ) $(SRC:.c=.d)
 
