@@ -30,14 +30,14 @@
 
 int				get_next_line(int fd, char **ln);
 
-typedef	struct	s_buffer
+typedef struct s_buffer
 {
 	char		dat[BUFFER_SIZE + 1];
 	ssize_t		i;
 	ssize_t		n;
 }				t_buffer;
 
-typedef	struct	s_str
+typedef struct s_str
 {
 	char		*p;
 	size_t		n;
