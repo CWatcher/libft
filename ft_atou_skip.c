@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atou_skip.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: CWatcher <cwatcher@student.21-school.ru>   +#+  +:+       +#+        */
+/*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 20:07:37 by cwatcher          #+#    #+#             */
 /*   Updated: 2021/03/08 18:49:04 by CWatcher         ###   ########.fr       */
