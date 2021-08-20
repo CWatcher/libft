@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strappend.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: CWatcher <cwatcher@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/14 11:45:31 by CWatcher          #+#    #+#             */
-/*   Updated: 2021/07/19 02:50:31 by CWatcher         ###   ########.fr       */
+/*   Created: 2021/06/13 13:50:57 by CWatcher          #+#    #+#             */
+/*   Updated: 2021/06/13 20:12:56 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 #include "libft.h"
 
-void	ft_putstr_fd(const char *s, int fd)
+char	*ft_strappend(char **ps, const char *s2)
 {
-	write(fd, s, ft_strlen(s) * sizeof(*s));
+	char	*s;
+
+	s = ft_strjoin(*ps, s2);
+	free(*ps);
+	return (*ps = s);
 }

@@ -6,7 +6,7 @@
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 12:32:57 by CWatcher          #+#    #+#             */
-/*   Updated: 2021/08/18 19:41:13 by CWatcher         ###   ########.fr       */
+/*   Updated: 2021/08/18 20:56:08 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 # define LIBFT_H
 
 # include <stddef.h>
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
 
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
@@ -51,15 +45,24 @@ int				ft_toupper(int c);
 int				ft_tolower(int c);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
+char			*ft_strappend(char **ps, const char *s2);
 char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_skipchr(const char *s, char delim);
 char			**ft_split(char const *s, char c);
+char			**ft_freestrs(char **ps);
 char			*ft_itoa(int n);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void			ft_putchar_fd(char c, int fd);
-void			ft_putstr_fd(char *s, int fd);
+void			ft_putstr_fd(const char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}				t_list;
+
 t_list			*ft_lstnew(void *content);
 void			ft_lstadd_front(t_list **lst, t_list *new);
 int				ft_lstsize(t_list *lst);
@@ -71,4 +74,6 @@ void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)
 					(void *));
 
+void			*ft_free(void *pp);
+void			ft_reassign(void **p, void *new_address);
 #endif
