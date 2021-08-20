@@ -6,7 +6,7 @@
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 17:17:41 by CWatcher          #+#    #+#             */
-/*   Updated: 2020/11/19 16:31:26 by CWatcher         ###   ########.fr       */
+/*   Updated: 2021/08/18 13:53:28 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	const char *p;
+	const char	*p;
 
 	p = NULL;
 	while (s && *s)

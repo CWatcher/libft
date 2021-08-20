@@ -6,7 +6,7 @@
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 17:42:36 by CWatcher          #+#    #+#             */
-/*   Updated: 2020/11/08 13:57:40 by CWatcher         ###   ########.fr       */
+/*   Updated: 2021/08/18 13:49:08 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	if (dst && dstsize)
 	{
 		i = 0;
-		dstsize = dstsize < n + 1 ? dstsize : n + 1;
+		if (dstsize > n)
+			dstsize = n + 1;
 		while (i < dstsize - 1)
 		{
 			dst[i] = src[i];

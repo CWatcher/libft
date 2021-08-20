@@ -6,11 +6,11 @@
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 11:23:33 by CWatcher          #+#    #+#             */
-/*   Updated: 2020/11/11 15:11:10 by CWatcher         ###   ########.fr       */
+/*   Updated: 2021/08/18 13:43:54 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isalpha(int c)
+int	ft_isalpha(int c)
 {
 	return (((unsigned)c | 0x20) - 'a' < 26);
 }

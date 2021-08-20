@@ -21,8 +21,10 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 		return (NULL);
 	d = dst;
 	s = src;
-	while (n--)
-		if ((*d++ = *s++) == (unsigned char)c)
-			return (d);
-	return (NULL);
+	*d = *s;
+	while (*d != (unsigned char)c && --n)
+		*++d = *++s;
+	if (n == 0)
+		return (NULL);
+	return (d + 1);
 }

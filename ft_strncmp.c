@@ -6,13 +6,13 @@
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 13:14:18 by CWatcher          #+#    #+#             */
-/*   Updated: 2020/11/09 15:09:48 by CWatcher         ###   ########.fr       */
+/*   Updated: 2021/05/12 01:32:14 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 

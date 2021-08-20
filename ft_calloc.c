@@ -6,7 +6,7 @@
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 18:00:13 by CWatcher          #+#    #+#             */
-/*   Updated: 2020/11/07 18:10:40 by CWatcher         ###   ########.fr       */
+/*   Updated: 2021/08/18 13:43:17 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	*ft_calloc(size_t count, size_t size)
 	if (n / count != size)
 		return (NULL);
 	i = 0;
-	if ((p = malloc(n)))
+	p = malloc(n);
+	if (p)
 		while (i < n)
 			p[i++] = 0;
 	return (p);

@@ -6,16 +6,16 @@
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 22:11:27 by CWatcher          #+#    #+#             */
-/*   Updated: 2020/11/08 11:48:22 by CWatcher         ###   ########.fr       */
+/*   Updated: 2021/08/18 13:44:43 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const unsigned char *p;
-	const unsigned char *q;
+	const unsigned char	*p;
+	const unsigned char	*q;
 	size_t				i;
 
 	p = s1;
