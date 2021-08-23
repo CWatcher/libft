@@ -6,7 +6,7 @@
 #    By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/15 16:37:00 by CWatcher          #+#    #+#              #
-#    Updated: 2021/08/20 13:44:07 by CWatcher         ###   ########.fr        #
+#    Updated: 2021/08/23 20:55:37 by CWatcher         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRC		= ft_atoi.c			\
 		  ft_split.c		\
 		  ft_strappend.c	\
 		  ft_strchr.c		\
+		  ft_strcmp.c		\
 		  ft_strdup.c		\
 		  ft_strjoin.c		\
 		  ft_strlcat.c		\
