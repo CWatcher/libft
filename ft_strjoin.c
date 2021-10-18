@@ -6,12 +6,12 @@
 /*   By: CWatcher <cwatcher@student.21-school.r>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 10:32:52 by CWatcher          #+#    #+#             */
-/*   Updated: 2021/07/21 17:56:35 by CWatcher         ###   ########.fr       */
+/*   Updated: 2021/09/23 17:53:05 by CWatcher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
+#include "ft_string.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
